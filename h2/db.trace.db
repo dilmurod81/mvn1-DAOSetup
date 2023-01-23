@@ -1,0 +1,9 @@
+2023-01-22 19:34:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PAINTING" not found (this database is empty); SQL statement:
+select * from painting [42104-214]
+2023-01-22 19:44:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PAINTING" not found; SQL statement:
+drop table painting [42102-214]
+2023-01-22 19:45:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "insert into painting (title, year_made) values (?, ?[*]"; expected "[, ::, AT, FORMAT, *, /, %, +, -, ||, NOT, IS, ILIKE, REGEXP, AND, OR, ,, )"; SQL statement:
+insert into painting (title, year_made) values (?, ? [42001-214]
