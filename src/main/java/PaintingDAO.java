@@ -59,4 +59,39 @@ public class PaintingDAO {
 
         return null;
     }
+
+    public int getOldestPaintingYear(){
+        try{
+            PreparedStatement ps = conn.prepareStatement("select min(year_made) as oldest_year from painting");
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                int oldestYear = rs.getInt("oldest_year");
+                return oldestYear;
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public List<Painting> getAllPaintingMadeInYear(int year){
+        try {
+//          we can cancat like the following way
+//          PreparedStatement ps = conn.prepareStatement("select * from painting where year_made = '+year+'");
+            PreparedStatement ps = conn.prepareStatement("select * from painting where year_made = ?");
+            ps.setInt(1, year);
+            ResultSet rs = ps.executeQuery();
+            List<Painting> allPaintings = new ArrayList<>();
+            while(rs.next()){
+                Painting newPainting = new Painting(rs.getString("title"), rs.getInt("year_made"));
+                allPaintings.add(newPainting);
+            }
+            return allPaintings;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }

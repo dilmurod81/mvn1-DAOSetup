@@ -15,6 +15,7 @@ public class Application {
         while(true){
             List<Painting> allPaintings = paintingDAO.getAllPainting();
             System.out.println(allPaintings);
+            System.out.println("current oldest painting year: "+paintingDAO.getOldestPaintingYear());
             System.out.println("add a new painting: ");
             String p_title = sc.nextLine();
             String p_year_input = sc.nextLine();
